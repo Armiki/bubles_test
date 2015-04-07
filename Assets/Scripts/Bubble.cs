@@ -19,7 +19,7 @@ public class Bubble : MonoBehaviour {
 
 	public void Init(float s, Texture2D tx){
 		float _scale = Game.defaultSpriteScale * s;
-		float x = Random.Range((-Screen.width * 0.5f) + _scale, (Screen.width * 0.5f) - _scale);
+		float x = Random.Range((-Screen.width * 0.45f), (Screen.width * 0.45f));
 		me.anchoredPosition = new Vector2(Random.Range(-Screen.width * 0.5f, Screen.width * 0.5f), 250);
 		scale = s;
 		me.sizeDelta = new Vector2(_scale, _scale);

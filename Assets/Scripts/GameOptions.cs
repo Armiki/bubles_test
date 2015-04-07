@@ -14,6 +14,7 @@ public class GameOptions : MonoBehaviour {
 	private Transform root;
 	private bool newPack;
 	private Camera cam;
+	private Server srv;
 
 	void Awake(){
 		EventAggregator.updateGameState.Subscribe(UpdateState);
@@ -27,12 +28,19 @@ public class GameOptions : MonoBehaviour {
 		if(Game.state == GameState.waitStart){
 			Game.userTime = 0;
 			StartCoroutine("GenerateTexturePack");
+			if(srv != null)srv.Close(); //закрываем сервер
 		}
 		else if (Game.state == GameState.inGame){
+			srv = new Server();
+			srv.Init();
 			Game.userScore = 0;
 			Game.userTime = 0;
 			Game.curSpeedDelta = Game.speedDelta;
 			spawnCd = 3;
+		}
+		else if (Game.state == GameState.lanGame){
+			Client cl = new GameObject("Client").AddComponent(typeof(Client)) as Client;
+			cl.ConnectToServer("192.168.1.181");
 		}
 	}
 
@@ -109,7 +117,8 @@ public enum GameState{
 	loadAssets,
 	openAssets,
 	waitStart,
-	inGame
+	inGame,
+	lanGame
 }
 
 public static class Game{
