@@ -6,7 +6,7 @@ public class LoadingAssets : MonoBehaviour {
 
 	private readonly string BundleURL = "http://app.npc-games.com/bubles_assets.unity3d";
 	private string AssetName = "Game";
-	private int version = 4;
+	private int version = 7;
 	
 	void Start() {
 		StartCoroutine (DownloadAndCache());
@@ -29,6 +29,7 @@ public class LoadingAssets : MonoBehaviour {
 				Instantiate(bundle.Load(AssetName));
 			// Unload the AssetBundles compressed contents to conserve memory
 			bundle.Unload(false);
+			www.Dispose();
 			
 		} // memory is freed from the web stream (www.Dispose() gets called implicitly)
 
