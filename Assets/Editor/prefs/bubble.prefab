@@ -12,10 +12,10 @@ GameObject:
   - 114: {fileID: 11483886}
   - 58: {fileID: 5844226}
   - 114: {fileID: 11415130}
-  - 114: {fileID: 11447158}
+  - 114: {fileID: 11460454}
   m_Layer: 5
   m_Name: bubble
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,8 @@ MonoBehaviour:
   img: {fileID: 11483886}
   colider: {fileID: 5844226}
   scale: 1
---- !u!114 &11447158
+  speed: 1
+--- !u!114 &11460454
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -62,7 +63,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}

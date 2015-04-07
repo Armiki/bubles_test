@@ -4,15 +4,18 @@ using System;
 
 public class LoadingAssets : MonoBehaviour {
 
-	private readonly string BundleURL = "http://app.npc-games.com/bubles_assets.unity3d";
+	private readonly string BundleURL = "http://app.npc-games.com/bubles_assets_ios.unity3d";
 	private string AssetName = "Game";
-	private int version = 7;
-	
+	private int version = 2;
+
+	public GameObject game;
 	void Start() {
 		StartCoroutine (DownloadAndCache());
 	}
 	
 	IEnumerator DownloadAndCache (){
+
+#if !UNITY_EDITOR
 		// Wait for the Caching system to be ready
 		while (!Caching.ready)
 			yield return null;
@@ -33,6 +36,10 @@ public class LoadingAssets : MonoBehaviour {
 			
 		} // memory is freed from the web stream (www.Dispose() gets called implicitly)
 
+#else
+		Instantiate(game);
+#endif
 		EventAggregator.updateGameState.Publish(GameState.waitStart);
+		yield return null;
 	}
 }
